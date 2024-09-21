@@ -1,0 +1,109 @@
+#!/bin/bash
+####### Start Variables Definition ####### 
+USERNAME=$1
+PASSWORD=$2
+GROUP=$3
+GROUPID=200
+USERID=1600
+####### Start Colors Definition ####### 
+redcolor=`tput setaf 1`
+greencolor=`tput setaf 2`
+reset=`tput sgr0`
+bold=`tput bold`
+
+echo "-----------------------------------"
+echo "| Welcome Edges for Training Team |"
+echo "-----------------------------------------"
+echo "| Hello Amgad & Tarek - Best Mesa on you|"
+echo "-----------------------------------------"
+
+sleep 2
+echo
+echo "/// Checking Environment Permissions"
+sleep 2
+
+if [ $USER != root ]; then
+	echo "${redcolor}ERROR !!"
+	echo "Root Permissions Required ,Please Re-Run script with sudo"
+	echo "${reset}Exit Status 1"
+	exit 1
+else
+	echo "${greencolor} Root Permissions Granted !${reset}"
+fi
+
+echo "/// Checking Provided Inputs"
+sleep 2
+
+if [ -z $USERNAME ]; then
+	echo "${redcolor}ERROR !!"
+	echo "Username field is empty ,please input a proper Username"
+	echo "${reset}Exit Status 2"
+	exit 2
+else
+	echo " Username provided = ${greencolor}${bold}$USERNAME ${reset}"
+fi
+sleep 1
+
+if [ -z $PASSWORD ]; then
+	echo "${redcolor}ERROR"
+	echo "Password field is empty ,please input a proper Password"
+	echo "${reset}Exit Status 3"
+	exit 3
+else
+	echo " Password provided = ${greencolor}${bold}$PASSWORD ${reset}"
+fi
+sleep 1
+
+
+if [ -z $GROUP ]; then
+	echo "${redcolor}ERROR"
+	echo "Group field is empty ,please input a proper Group"
+	echo "${reset}Exit Status 4"
+	exit 4
+else
+	echo " Group provided    = ${greencolor}${bold}$GROUP ${reset}"
+fi
+
+sleep 1
+echo " Shell = ${greencolor}${bold}Bash${reset}"
+sleep 1
+
+echo " Create Home = ${greencolor}${bold}YES${reset}"
+sleep 1
+
+
+while true; do
+
+read -p "Do you want to proceed? (y/n) " yn
+
+case $yn in 
+	[yY] )
+	echo "${greencolor}${bold}Creating User with defined Configs${reset} "
+	echo "-----------------------------------"
+	sleep 1
+	sudo useradd -md /home/$USERNAME -s /bin/bash -p $(openssl passwd -6 $PASSWORD) $USERNAME
+	id $USERNAME
+	sleep 2
+	echo
+	echo "${greencolor}${bold}Adding New Group and Assigning to user${reset}"
+	echo "-----------------------------------"
+	sleep 1
+	sudo groupadd -g $GROUPID $GROUP
+	sudo usermod -g $GROUP $USERNAME
+	id $USERNAME
+	sleep 2
+	echo
+	echo "${greencolor}${bold}Changing UID${reset}"
+	echo "-----------------------------------"
+	sleep 1
+	sudo usermod -u $USERID $USERNAME
+	id $USERNAME
+	echo
+	break;;
+	[nN] ) echo exiting...;
+		exit;;
+	* ) echo invalid response;;
+esac
+
+done
+

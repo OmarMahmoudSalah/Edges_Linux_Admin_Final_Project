@@ -1,0 +1,61 @@
+Start
+  |
+  v
+Initialize Server
+  |
+  v
+Create Socket
+  |
+  v
+Bind Socket to Port
+  |
+  v
+Listen for Incoming Connections
+  |
+  v
+Enter Main Server Loop
+  |
+  v
+  +-----------------------------------+
+  | Accept Client Connection          |
+  |                                   |
+  |  Fork Process for Client Handling |
+  |                                   |
+  +-----------------------------------+
+                   |
+                   v
+          +----------------------+
+          | Process for Each Client |
+          |                        |
+          |  Read Command from Client|
+          |            |           |
+          |            v           |
+          |  Execute Command       |
+          |            |           |
+          |            v           |
+          |  Send Result Back to Client |
+          |            |           |
+          |            v           |
+          |  Close Client Connection   |
+          |                        |
+          +----------------------+
+                   |
+                   v
+  +-----------------------------------+
+  | Check for Termination Signal      |
+  | (e.g., SIGINT)                    |
+  |                                   |
+  | If Signal Received:              |
+  |  - Exit Main Server Loop         |
+  |  - Terminate Server Gracefully   |
+  +-----------------------------------+
+                   |
+                   v
+           End Main Server Loop
+                   |
+                   v
+        Terminate Server Gracefully
+                   |
+                   v
+                   End
+

@@ -1,0 +1,38 @@
+0) Add User to Group Sudoers for Needed chown 
+sudo adduser user3 sudo	
+
+1)Switch to the newly created user ---> su - user3
+2) Display all the files inside the extracted folder recursively and with long listing format
+---> 	ls -lhR
+total 16K
+drwxrwxr-x 2 user3 omar 4.0K Aug 29 08:33 NewDir
+-rw-rw-r-- 1 user3 omar  10K Aug 29 08:33 NewDir.tar
+
+./NewDir:
+total 16K
+-rw-rw-r-- 1 omar omar 27 Aug 29 08:33 hello.c
+-rw-rw-r-- 1 omar omar 27 Aug 29 08:33 hello.h
+-rw-rw-r-- 1 omar omar 26 Aug 29 08:33 main.c
+-rw-rw-r-- 1 omar omar 26 Aug 29 08:33 main.h
+	
+3)Change to owner of this directory recursively to be the new user
+$ sudo chown -R  user3 *
+
+4) ls -lhR
+total 16K
+drwxrwxr-x 2 user3 omar 4.0K Aug 29 08:33 NewDir
+-rw-rw-r-- 1 user3 omar  10K Aug 29 08:33 NewDir.tar
+
+./NewDir:
+total 16K
+-rw-rw-r-- 1 user3 omar 27 Aug 29 08:33 hello.c
+-rw-rw-r-- 1 user3 omar 27 Aug 29 08:33 hello.h
+-rw-rw-r-- 1 user3 omar 26 Aug 29 08:33 main.c
+-rw-rw-r-- 1 user3 omar 26 Aug 29 08:33 main.h
+
+k) Search for the word “file” in the extracted directory recursively
+grep -r "file" ./NewDir
+l) Remove all the files ending with “.c”
+rm -rf ./NewDir/*.c
+
+

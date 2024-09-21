@@ -1,0 +1,86 @@
+Start
+  |
+  v
+Accept input parameter (USERNAME)
+  |
+  v
+Check if USERNAME is provided
+  |
+  +---> No (USERNAME is empty)
+  |       |
+  |       v
+  |    Display error: "Username field is empty"
+  |       |
+  |       v
+  |     Exit (Status 1)
+  |
+  v
+Yes (USERNAME provided)
+  |
+  v
+Check if USERNAME exists
+  |
+  +---> No (USERNAME not found)
+  |       |
+  |       v
+  |    Display error: "Username not found"
+  |       |
+  |       v
+  |     Exit (Status 2)
+  |
+  v
+Yes (USERNAME exists)
+  |
+  v
+Check if USERNAME home directory exists
+  |
+  +---> No (Directory not found)
+  |       |
+  |       v
+  |    Display error: "Username Home Directory not found"
+  |       |
+  |       v
+  |     Exit (Status 3)
+  |
+  v
+Yes (Directory exists)
+  |
+  v
+Check if "NewDir" exists
+  |
+  +---> Yes (Directory found)
+  |       |
+  |       v
+  |    Delete existing "NewDir"
+  |
+  v
+No (No folder exists)
+  |
+  v
+Create "NewDir" and create files (main.c, main.h, hello.c, hello.h)
+  |
+  v
+Populate files with content ("This File is named $i")
+  |
+  v
+Compress "NewDir" into TAR file (NewDir.tar)
+  |
+  v
+Change permissions for USERNAME's home directory
+  |
+  +---> Fail (Failed to change permissions)
+  |       |
+  |       v
+  |    Display error: "Failed to change permissions"
+  |       |
+  |       v
+  |     Exit (Status 4)
+  |
+  v
+Success (Permissions changed)
+  |
+  v
+Copy TAR file to USERNAME's home directory and extract it
+  |
+  v
+End

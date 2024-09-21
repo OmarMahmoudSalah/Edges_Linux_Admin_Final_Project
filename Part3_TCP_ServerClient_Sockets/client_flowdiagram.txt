@@ -1,0 +1,62 @@
+Start
+  |
+  v
+Parse Command-Line Arguments
+  |
+  v
+Check Arguments Count
+  |
+  v
+Error: Print Error Message and Exit (if arguments are incorrect)
+  |
+  v
+Call Client_Create_Socket
+  |
+  v
+  +---------------------------+
+  | Create Socket             |
+  |                           |
+  | Check for Socket Creation |
+  | Success/Failure           |
+  |                           |
+  +---------------------------+
+  |
+  v
+Call Client_Connect_Socket
+  |
+  v
+  +---------------------------+
+  | Initialize Address Struct |
+  | Set IP Address and Port   |
+  | Connect to Server         |
+  |                           |
+  | Check Connection Status   |
+  | Success/Failure           |
+  +---------------------------+
+  |
+  v
+Enter Main Communication Loop
+  |
+  v
+  +----------------------------------+
+  | Get Command from User            |
+  |                                  |
+  | Send Command to Server           |
+  |                                  |
+  | Receive Return Value from Server |
+  | Print Server Response            |
+  |                                  |
+  | Check for "stop" Command         |
+  | If "stop", Exit Loop             |
+  +----------------------------------+
+  |
+  v
+  +---------------------------+
+  | Close Socket              |
+  |                           |
+  | Terminate Connection      |
+  +---------------------------+
+  |
+  v
+  End
+

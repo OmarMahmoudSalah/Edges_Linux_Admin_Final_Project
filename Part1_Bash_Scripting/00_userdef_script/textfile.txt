@@ -1,0 +1,21 @@
+We want to make this script globally reachable (i.e. you can run from anywhere in the system without indicating its path, so that we could use “userdef” instead of “./userdef”).
+
+m) How can we achieve this (2 methods) ?
+
+Every time shell fetches a command ,it searches for it in the global variable PATH
+- printenv PATH
+PATH="/home/omar/x-tools/arm-training-linux-gnueabihf/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+
+Answer : 
+1) By Appeding The Script source to PATH - Will require to be exported everytime shell opens
+export PATH="$PATH:(absolute directory of script)"
+2) By Creating a soft link in any folder above of PATH , for example /bin
+sudo ln -s /path/to/script /bin/userdef
+
+
+n) We would like this change to be permanent, how can we do this? 
+1) Add the use 2nd option above or add export line to ~/.bashrc file to make it always exported
+2) nano /etc/environment & append the new location to path 
+
+o) We just made this change permanent, but we don’t want to wait until another terminal is opened, we would like to make this change NOW, and in this terminal. What could we do?
+1) Source ~/.bashrc

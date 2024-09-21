@@ -1,0 +1,81 @@
+Start
+  |
+  v
+Accept input parameters (USERNAME, PASSWORD, GROUP)
+  |
+  v
+Check if the script is run by the root user
+  |
+  +---> No (Not root)
+  |       |
+  |       v
+  |    Display error: "Root Permissions Required"
+  |       |
+  |       v
+  |     Exit (Status 1)
+  |
+  v
+Yes (Root)
+  |
+  v
+Validate USERNAME
+  |
+  +---> No (USERNAME is empty)
+  |       |
+  |       v
+  |    Display error: "Username field is empty"
+  |       |
+  |       v
+  |     Exit (Status 2)
+  |
+  v
+Yes (USERNAME provided)
+  |
+  v
+Validate PASSWORD
+  |
+  +---> No (PASSWORD is empty)
+  |       |
+  |       v
+  |    Display error: "Password field is empty"
+  |       |
+  |       v
+  |     Exit (Status 3)
+  |
+  v
+Yes (PASSWORD provided)
+  |
+  v
+Validate GROUP
+  |
+  +---> No (GROUP is empty)
+  |       |
+  |       v
+  |    Display error: "Group field is empty"
+  |       |
+  |       v
+  |     Exit (Status 4)
+  |
+  v
+Yes (GROUP provided)
+  |
+  v
+Prompt the user to proceed (y/n)
+  |
+  +---> No (User declines)
+  |       |
+  |       v
+  |     Exit
+  |
+  v
+Yes (User confirms)
+  |
+  v
+Create user, assign group, change UID
+  |
+  v
+Display success messages
+  |
+  v
+End
+

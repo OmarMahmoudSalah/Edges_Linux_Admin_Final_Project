@@ -1,0 +1,40 @@
+./server 
+Socket Created 
+Socket Binded 
+Socket Listening 
+New Socket Accepted 
+Command received from client: mkdir exam_dir
+ 
+The Command Return = 0
+Command received from client: ls
+ 
+ client     exam_dir		       server
+ client.c  'First Socket Accept.png'   server.c
+The Command Return = 0
+New Socket Accepted 
+Command received from client: mkdir -n dir2
+ 
+mkdir: invalid option -- 'n'
+Try 'mkdir --help' for more information.
+The Command Return = 256
+
+Command received from client: touch exam_file
+ 
+The Command Return = 0
+Command received from client: ls
+ 
+ client     exam_dir   'First Socket Accept.png'    server
+ client.c   exam_file  'Second Socket Accept.png'   server.c
+The Command Return = 0
+Command received from client: nooo
+ 
+sh: 1: nooo: not found
+The Command Return = 32512
+Command received from client: stop
+ 
+Stopping communication with client
+Command received from client: stop
+ 
+Stopping communication with client
+^C
+Received SIGINT, terminating server...
