@@ -18,7 +18,6 @@ This script creates a new user and group, assigns the user to the group, and per
 - Creates a new group with ID=200.
 - Adds the new user to the new group.
 - Modifies the user's UID to 1600 and sets the primary group.
-- Makes the script globally reachable.
 
 ### Script: 2ndScript
 This script creates directories and files, archives them, copies them to the new user's home directory, and extracts them.
